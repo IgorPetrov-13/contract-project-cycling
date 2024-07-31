@@ -3,10 +3,10 @@ import apiAxiosInstance from '../service/apiAxiosInstace';
 
 function RoadsPage({roads, setRoads}) {
 
-    const getRoads=()=>{
-        apiAxiosInstance.get('/roads')
-        .then(({data}) => setRoads(data))
-        .catch(err => console.log(err))
+    const getRoads=async()=>{
+        const {data} = await apiAxiosInstance.get('/roads')
+        console.log(data)
+        setRoads(data.roads)
     }
 
     useEffect(()=> {
@@ -15,7 +15,9 @@ function RoadsPage({roads, setRoads}) {
 
     return (
         <div>
-            
+            {roads.map(road=>{
+                return <section key={road.id}>{road.title} </section>
+            })}
         </div>
     );
 }
