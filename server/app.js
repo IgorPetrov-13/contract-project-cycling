@@ -13,5 +13,6 @@ serverConfig(app);
 // Маршрутизация
 app.use("/api", indexRoute);
 
+
 // Прослушивания порта
 app.listen(PORT, () => console.log(`Server started at ${PORT} port`));
