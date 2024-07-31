@@ -59,7 +59,7 @@ roadsRoute.delete("/:roadId", async (req, res) => {
   }
 });
 
-taskRoute.put("/:roadId", async (req, res) => {
+roadsRoute.put("/:roadId", async (req, res) => {
   const { roadId } = req.params;
   try {
     const road = await Road.findOne({ where: { id: roadId } });
@@ -74,4 +74,4 @@ taskRoute.put("/:roadId", async (req, res) => {
   }
 });
 
-module.exports = taskRoute;
+module.exports = roadsRoute;
