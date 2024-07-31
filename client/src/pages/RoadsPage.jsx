@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import apiAxiosInstance from '../service/apiAxiosInstace';
 
 function RoadsPage({roads, setRoads}) {
 
-    function getRoads(){
+    const getRoads=()=>{
         apiAxiosInstance.get('/roads')
+        .then(({data}) => setRoads(data))
+        .catch(err => console.log(err))
     }
 
+    useEffect(()=> {
+        getRoads()
+    }, [])
 
     return (
         <div>
-            Тут маршруты
+            {roads.length? : }
         </div>
     );
 }
