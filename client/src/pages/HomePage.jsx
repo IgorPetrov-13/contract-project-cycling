@@ -1,9 +1,10 @@
 import React from 'react';
+import MapComponent from '../components/MapComponent';
 
 function HomePage() {
     return (
         <div>
-            Привет Велосепедист
+          Home
         </div>
     );
 }
