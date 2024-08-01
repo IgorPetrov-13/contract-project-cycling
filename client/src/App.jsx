@@ -8,7 +8,7 @@ import RegistrationPage from "./pages/RegistrationPage";
 import RoadsPage from "./pages/RoadsPage";
 import { useEffect, useState } from "react";
 import apiAxiosInstance, { setAccessToken } from "./service/apiAxiosInstace";
-import PesonalPage from './pages/PesonalPage';
+import PersonalPage from './pages/PersonalPage';
 import CurrenRoadId from './pages/CurrenRoadId';
 import OneRoadPage from "./pages/OneRoadPage";
 
@@ -44,7 +44,7 @@ function App() {
 
           <Route path="/roads" element={<RoadsPage roads={roads} setRoads={setRoads}/>}/>
           <Route path='/myroads/:id' element={<CurrenRoadId roads={roads}/>} /> 
-          <Route path='/persona' element={<PesonalPage user={user} setRoads={setRoads}/>}/>
+          <Route path='/user' element={<PersonalPage user={user} setRoads={setRoads}/>}/>
           <Route path="/roads/:id" element={<OneRoadPage roads={roads} />} />
 
           <Route path="*" element={<NotFound />} />

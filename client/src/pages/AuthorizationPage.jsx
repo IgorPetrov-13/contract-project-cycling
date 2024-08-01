@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useForm } from "react-hook-form";
 import apiAxiosInstance, { setAccessToken } from "../service/apiAxiosInstace";
 import { useNavigate } from "react-router-dom";
@@ -62,7 +61,7 @@ function AuthorizationPage({ setUser, user }) {
         <div style={{ color: "red" }}>{errors?.email.message || "Error"}</div>
       )}
       <br />
-      <lable>
+      <label>
         Введите пароль
         <input
           type="password"
@@ -74,7 +73,7 @@ function AuthorizationPage({ setUser, user }) {
             },
           })}
         />
-      </lable>
+      </label>
       <br />
       {errors?.password && (
         <div style={{ color: "red" }}>

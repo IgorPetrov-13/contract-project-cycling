@@ -1,7 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import apiAxiosInstance from "../service/apiAxiosInstace";
 
-function NewRoadForm() {
+function NewRoadForm({ user, setUserRoads, userRoads }) {
   const {
     register,
     handleSubmit,
@@ -14,12 +15,20 @@ function NewRoadForm() {
       city: "",
       length: "",
       map: "",
-      userId: "1", //!Поставить юзер айди!!--------------------------------
+      userId: user.id, //!Поставить юзер айди!!--------------------------------
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
+
+    try {
+      const { data } = apiAxiosInstance.post("/roads", data);
+      setUserRoads((prevstate) => [...prevstate, data.newRoad]);
+      console.log(userRoads);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -34,7 +43,7 @@ function NewRoadForm() {
         </a>
       </p>
       <br />
-      <lable>
+      <label>
         Название маршрута
         <input
           {...register("title", {
@@ -45,7 +54,7 @@ function NewRoadForm() {
             },
           })}
         />
-      </lable>
+      </label>
       <br />
       {errors?.title && (
         <div style={{ color: "red" }}>{errors?.title.message || "Error"}</div>
@@ -68,7 +77,7 @@ function NewRoadForm() {
         </div>
       )}
       <br />
-      <lable>
+      <label>
         Город
         <input
           type="city"
@@ -80,12 +89,12 @@ function NewRoadForm() {
             },
           })}
         />
-      </lable>
+      </label>
       <br />
       {errors?.city && (
         <div style={{ color: "red" }}>{errors?.city.message || "Error"}</div>
       )}
-      <lable>
+      <label>
         Длина маршрута (км)
         <input
           type="number"
@@ -93,19 +102,19 @@ function NewRoadForm() {
             required: "Укажите длину маршрута",
           })}
         />
-      </lable>
+      </label>
       {errors?.length && (
         <div style={{ color: "red" }}>{errors?.length.message || "Error"}</div>
       )}
       <br />
-      <lable>
+      <label>
         Ссылка на маршрут
         <input
           {...register("map", {
             required: "Укажите длину маршрута",
           })}
         />
-      </lable>
+      </label>
       {errors?.map && (
         <div style={{ color: "red" }}>{errors?.map.message || "Error"}</div>
       )}

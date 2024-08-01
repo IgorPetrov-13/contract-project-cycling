@@ -32,7 +32,7 @@ function RegistrationPage({ setUser }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Регистрация</h2>
-      <lable>
+      <label>
         Ваше имя
         <input
           {...register("name", {
@@ -43,7 +43,7 @@ function RegistrationPage({ setUser }) {
             },
           })}
         />
-      </lable>
+      </label>
       <br />
       {errors?.name && (
         <div style={{ color: "red" }}>{errors?.name.message || "Error"}</div>
@@ -68,7 +68,7 @@ function RegistrationPage({ setUser }) {
         <div style={{ color: "red" }}>{errors?.email.message || "Error"}</div>
       )}
       <br />
-      <lable>
+      <label>
         Пароль
         <input
           type="password"
@@ -80,14 +80,14 @@ function RegistrationPage({ setUser }) {
             },
           })}
         />
-      </lable>
+      </label>
       <br />
       {errors?.password && (
         <div style={{ color: "red" }}>
           {errors?.password.message || "Error"}
         </div>
       )}
-      <lable>
+      <label>
         Повторите пароль
         <input
           type="password"
@@ -99,7 +99,7 @@ function RegistrationPage({ setUser }) {
             },
           })}
         />
-      </lable>
+      </label>
       {errors?.confirm && (
         <div style={{ color: "red" }}>{errors?.confirm.message || "Error"}</div>
       )}

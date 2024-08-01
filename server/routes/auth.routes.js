@@ -45,7 +45,7 @@ router.post('/authorization', async (req, res) => {
       res.cookie(jwtConfig.refresh.type, refreshToken, { httpOnly: true, maxAge: jwtConfig.refresh.expiresIn }).json({ accessToken, user })
 
 
-    } else { return res.status(400).json({ massage: 'Не верно емэил или пароль' }) }
+    } else { return res.status(400).json({ massage: 'Не верно email или пароль' }) }
 
 
   } catch (error) {

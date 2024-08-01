@@ -7,7 +7,7 @@ function Navbar(props) {
             <NavLink to="/roads">Веломаршруты</NavLink>
             <NavLink to="/auth/authorization">Вход</NavLink>
             <NavLink to="/auth/registration">Регистрация</NavLink>
-            <NavLink to='/persona'>Личный кабинет</NavLink>
+            <NavLink to='/user'>Личный кабинет</NavLink>
         </nav>
     );
 }
