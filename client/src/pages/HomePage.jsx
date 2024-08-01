@@ -1,7 +1,7 @@
 import React from 'react';
 import MapComponent from '../components/MapComponent';
 
-function HomePage(props) {
+function HomePage() {
     return (
         <div>
           Home

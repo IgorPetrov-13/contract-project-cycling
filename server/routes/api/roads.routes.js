@@ -10,12 +10,12 @@ roadsRoute.get("/", async (req, res) => {
   }
 });
 
-roadsRoute.get("/:roadId", async (req, res) => {
-  const { roadId } = req.params;
+roadsRoute.get("/:userId", async (req, res) => {//Берем id юзера и выводим все его маршруты в личном кабинете 
+  const { userId } = req.params;
   try {
-    const road = await Road.findOne({ where: { id: roadId } });
-    if (road) {
-      res.status(200).json({ message: "success", task });
+    const userRoads = await Road.findAll({ where: { userId } });
+    if (userRoads) {
+      res.status(200).json({ message: "success", userRoads });
     } else {
       res.status(400).json({ message: "Нет такого маршрута" });
     }
@@ -50,7 +50,7 @@ roadsRoute.delete("/:roadId", async (req, res) => {
   try {
     const deletedRoad = Road.destroy({ where: { id: roadId } });
     if (deletedRoad === 0) {
-      return res.status(404).json({ message: "Task not found" });
+      return res.status(404).json({ message: "Road not found" });
     } else {
       res.status(200).json({ message: "success" });
     }
@@ -64,7 +64,7 @@ roadsRoute.put("/:roadId", async (req, res) => {
   try {
     const road = await Road.findOne({ where: { id: roadId } });
     if (!road) {
-      return res.status(404).json({ message: "Task not found" });
+      return res.status(404).json({ message: "Road not found" });
     } else {
       const updateRoad = await Road.update(req.body, { where: { id: roadId } });
       res.status(200).json({ message: "success", updateRoad });
