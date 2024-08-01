@@ -1,11 +1,14 @@
 import React from "react";
 
-function HomePage() {
 
-
+function HomePage({user}) {
     return (
         <div>
-          Home
+      Home
+           
+            <h2> Привет, {user ? user.name : "красавчик" }</h2>
+          
+
         </div>
     );
 }
