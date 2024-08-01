@@ -1,9 +1,10 @@
 import React from 'react';
 
-function HomePage(props) {
+function HomePage({user}) {
     return (
         <div>
-            Привет Велосепедист
+            Привет 
+            <h2>{user ? user.name : "красавчик" }</h2>
         </div>
     );
 }

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import apiAxiosInstance, { setAccessToken } from "../service/apiAxiosInstace";
 
-function RegistrationPage() {
+function RegistrationPage({ setUser }) {
   const {
     register,
     handleSubmit,
@@ -17,9 +18,17 @@ function RegistrationPage() {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
+    if (data.confirm === data.password) {
+      apiAxiosInstance
+        .post("/auth/registration", data)
+        .then(({ data }) => {
+          setAccessToken(data.accessToken);
+          setUser(data.user);
+          
+        })
+        .catch((err) => console.log(err));
+    }
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Регистрация</h2>
@@ -61,7 +70,8 @@ function RegistrationPage() {
       <br />
       <lable>
         Пароль
-        <input type="password"
+        <input
+          type="password"
           {...register("password", {
             required: "please, write name",
             minLength: {
@@ -79,7 +89,8 @@ function RegistrationPage() {
       )}
       <lable>
         Повторите пароль
-        <input type="password"
+        <input
+          type="password"
           {...register("confirm", {
             required: "please, write name",
             minLength: {

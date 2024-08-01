@@ -5,13 +5,13 @@ const PORT = process.env.PORT ?? 3000;
 const serverConfig = require("./config/serverConfig");
 
 // Импортируем роуты из отдельных файлов
-const indexRoute = require("./routes/api.routes");
+const apiRoute = require("./routes/api.routes");
 
 // Конфигурация
 serverConfig(app);
 
 // Маршрутизация
-app.use("/api", indexRoute);
+app.use("/api", apiRoute);
 
 
 // Прослушивания порта
