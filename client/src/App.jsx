@@ -25,7 +25,7 @@ function App() {
           <Route path="/auth/registration" element={<RegistrationPage setUser={setUser}/>}/>
           <Route path="/roads" element={<RoadsPage roads={roads} setRoads={setRoads}/>}/>
           <Route path='/myroads/:id' element={<CurrenRoadId roads={roads}/>} /> 
-          <Route path='/persona' element={<PesonalPage user={user}/>}/>
+          <Route path='/persona' element={<PesonalPage user={user} setRoads={setRoads}/>}/>
           <Route path="/roads/:id" element={<OneRoadPage roads={roads} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

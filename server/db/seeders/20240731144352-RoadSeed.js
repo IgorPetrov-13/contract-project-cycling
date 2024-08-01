@@ -9,28 +9,28 @@ module.exports = {
         title:'один',
         map: 'map1',
         length: 15,
-        sity: 'spb',
+        city: 'spb',
         description: 'qweethrtetrhrergdfbg',
         userId: 1
       },
       {title:'два',
         map: 'map2',
         length: 8,
-        sity: 'moskow',
+        city: 'moskow',
         description: 'qweethtrdfbg',
         userId: 2
       },
       {title:'три',
         map: 'map3',
         length: 7,
-        sity: 'erevan',
+        city: 'erevan',
         description: 'qrghtyjtyjtygdfbg',
         userId: 3
       },
       {title:'четыре',
         map: 'map4',
         length: 3,
-        sity: 'sochi',
+        city: 'sochi',
         description: 'qwejytjtyhtrgdfbg',
         userId: 2
       }

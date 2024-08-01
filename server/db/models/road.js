@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     map: DataTypes.TEXT,
     length: DataTypes.INTEGER,
-    sity: DataTypes.STRING,
+    city: DataTypes.STRING,
     description: DataTypes.TEXT,
     userId: DataTypes.INTEGER
   }, {
