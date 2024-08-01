@@ -6,6 +6,8 @@ import AuthorizationPage from './pages/AuthorizationPage';
 import RegistrationPage from './pages/RegistrationPage';
 import RoadsPage from './pages/RoadsPage';
 import { useState } from 'react';
+import PesonalPage from './pages/PesonalPage';
+import CurrenRoadId from './pages/CurrenRoadId';
 
 function App() {
   const [roads, setRoads] = useState([])
@@ -20,6 +22,8 @@ function App() {
           <Route path="/auth/registration" element={<RegistrationPage setUser={setUser}/>}/>
           <Route path="/roads" element={<RoadsPage roads={roads} setRoads={setRoads}/>}/>
           <Route path='*' element={<NotFound />}/>
+          <Route path='/myroads/:id' element={<CurrenRoadId roads={roads}/>} /> 
+          <Route path='/persona' element={<PesonalPage user={user}/>}/>
         </Routes>
       </BrowserRouter>
     </>
