@@ -1,10 +1,14 @@
-import React from 'react';
+import React from "react";
+
 
 function HomePage({user}) {
     return (
         <div>
-            Привет 
-            <h2>{user ? user.name : "красавчик" }</h2>
+      Home
+           
+            <h2> Привет, {user ? user.name : "красавчик" }</h2>
+          
+
         </div>
     );
 }

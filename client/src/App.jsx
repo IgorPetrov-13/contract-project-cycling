@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
@@ -7,6 +8,11 @@ import RegistrationPage from "./pages/RegistrationPage";
 import RoadsPage from "./pages/RoadsPage";
 import { useEffect, useState } from "react";
 import apiAxiosInstance, { setAccessToken } from "./service/apiAxiosInstace";
+import PesonalPage from './pages/PesonalPage';
+import CurrenRoadId from './pages/CurrenRoadId';
+import OneRoadPage from "./pages/OneRoadPage";
+
+
 
 function App() {
   const [roads, setRoads] = useState([]);
@@ -16,13 +22,11 @@ function App() {
 
   useEffect(() => {
     apiAxiosInstance.get("/tokens/refresh").then(({ data }) => {
-      console.log(data, 5555);
       setAccessToken(data.accessToken);
       setUser(data.user);
-      console.log(user, 444444);
     });
   }, []);
-  
+
   return (
     <>
       <BrowserRouter>
@@ -37,10 +41,12 @@ function App() {
             path="/auth/registration"
             element={<RegistrationPage setUser={setUser} />}
           />
-          <Route
-            path="/roads"
-            element={<RoadsPage roads={roads} setRoads={setRoads} />}
-          />
+
+          <Route path="/roads" element={<RoadsPage roads={roads} setRoads={setRoads}/>}/>
+          <Route path='/myroads/:id' element={<CurrenRoadId roads={roads}/>} /> 
+          <Route path='/persona' element={<PesonalPage user={user}/>}/>
+          <Route path="/roads/:id" element={<OneRoadPage roads={roads} />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
