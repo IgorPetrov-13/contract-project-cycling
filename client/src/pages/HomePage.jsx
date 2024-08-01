@@ -1,12 +1,7 @@
-import React from 'react';
-import MapComponent from '../components/MapComponent';
+import React from "react";
 
-function HomePage(props) {
-    return (
-        <div>
-          Home
-        </div>
-    );
+function HomePage() {
+  return <div>Home</div>;
 }
 
 export default HomePage;
