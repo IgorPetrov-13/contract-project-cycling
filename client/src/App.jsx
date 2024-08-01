@@ -6,6 +6,7 @@ import AuthorizationPage from './pages/AuthorizationPage';
 import RegistrationPage from './pages/RegistrationPage';
 import RoadsPage from './pages/RoadsPage';
 import { useState } from 'react';
+import OneRoadPage from './pages/OneRoadPage';
 
 function App() {
   const [roads, setRoads] = useState([])
@@ -19,6 +20,7 @@ function App() {
           <Route path="/auth/authorization" element={<AuthorizationPage setUser={setUser}/>}/>
           <Route path="/auth/registration" element={<RegistrationPage setUser={setUser}/>}/>
           <Route path="/roads" element={<RoadsPage roads={roads} setRoads={setRoads}/>}/>
+          <Route path="/roads/:id" element={<OneRoadPage/>}/>
           <Route path='*' element={<NotFound />}/>
         </Routes>
       </BrowserRouter>
