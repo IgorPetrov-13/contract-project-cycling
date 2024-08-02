@@ -45,7 +45,7 @@ function RoadsPage({ roads, setRoads }) {
               style={{ backgroundColor: "#edf1f5", margin: "0 auto", marginBottom: "40px"}}
 
             >
-              <Link to={`/roads/${road.id}`}>
+              <Link to={`/road/${road.id}`}>
                 <h3>{road.title}</h3>
               </Link>
               <p>{road.description}</p>

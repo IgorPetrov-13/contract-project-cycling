@@ -52,7 +52,7 @@ function App() {
               path="/user"
               element={<PersonalPage user={user} setRoads={setRoads} />}
             />
-            <Route path="/roads/:id" element={<OneRoadPage roads={roads} />} />
+            <Route path="/road/:id" element={<OneRoadPage roads={roads} />} />
             <Route
               path="/auth/logout"
               element={<LogoutPage user={user} setUser={setUser} />}
