@@ -37,7 +37,7 @@ function RegistrationPage({ setUser }) {
         <h2>Регистрация</h2>
         <label>
           Ваше имя
-          <input
+          <input className="form-control"
             {...register("name", {
               required: "please, write name",
               minLength: {
@@ -53,7 +53,7 @@ function RegistrationPage({ setUser }) {
         )}
         <label>
           Your email
-          <input
+          <input className="form-control"
             {...register("email", {
               required: "please, write email",
               minLength: {
@@ -73,7 +73,7 @@ function RegistrationPage({ setUser }) {
         <br />
         <label>
           Пароль
-          <input
+          <input className="form-control"
             type="password"
             {...register("password", {
               required: "please, write name",
@@ -92,7 +92,7 @@ function RegistrationPage({ setUser }) {
         )}
         <label>
           Повторите пароль
-          <input
+          <input className="form-control"
             type="password"
             {...register("confirm", {
               required: "please, write name",
@@ -109,6 +109,7 @@ function RegistrationPage({ setUser }) {
           </div>
         )}
         <br />
+        <br/>
         <input type="submit" disabled={!isValid} />
       </form>
       {error && <h5>{error}</h5>}
