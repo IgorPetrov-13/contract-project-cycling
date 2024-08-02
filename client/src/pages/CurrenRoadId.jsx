@@ -64,9 +64,11 @@ function CurrenRoadId({roads}) {
 
 
 
-            <button onClick={() => navigate(-1)}>Go back</button>
-            <button onClick={deleteRoads}>Delete</button>
-            {updateStatus?<button onClick={updateRoads}>Save</button>:<button onClick={() => setUpdateStatus(prevState => !prevState)}>Edit</button> }
+            <button className={"btn btn-primary btn-md"} onClick={() => navigate(-1)}>Назад</button>
+            <br/>
+            <button className={"btn btn-danger btn-md"} onClick={deleteRoads}>Удалить</button>
+            <br/>
+            {updateStatus?<button className={"btn btn-primary btn-md"} onClick={updateRoads}>Сохранить</button>:<button className={"btn btn-primary btn-md"} onClick={() => setUpdateStatus(prevState => !prevState)}>Обновить</button> }
         </>
     );
 }

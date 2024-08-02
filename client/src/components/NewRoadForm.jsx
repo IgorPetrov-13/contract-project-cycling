@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import apiAxiosInstance from "../service/apiAxiosInstace";
+import { useNavigate } from "react-router-dom";
 
-function NewRoadForm({ user, setUserRoads, userRoads }) {
+function NewRoadForm({ user, setIsUpdated, setUserRoads, userRoads }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm({
     mode: "onBlur",
@@ -18,6 +20,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       userId: user.id, //!Поставить юзер айди!!--------------------------------
     },
   });
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data, 1111111);
@@ -32,9 +35,9 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       apiAxiosInstance
         .post("/roads", data)
         .then(({ data }) => {
-          console.log(222, data);
           setUserRoads((prevstate) => [...prevstate, data.newRoad]);
-          console.log(111, userRoads);
+          setIsUpdated((prev) => !prev);
+          reset()
         })
         .catch((error) => console.log(error));
     }
@@ -55,7 +58,8 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <br />
       <label>
         Название маршрута
-        <input className="form-control"
+        <input
+          className="form-control"
           {...register("title", {
             required: "Пожалуйста, напишите названия",
             minLength: {
@@ -71,7 +75,8 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       )}
       <label>
         Описание маршрута
-        <input className="form-control"
+        <input
+          className="form-control"
           {...register("description", {
             required: "Пожалуйста, опишите маршрут",
             minLength: {
@@ -89,7 +94,8 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <br />
       <label>
         Город
-        <input className="form-control"
+        <input
+          className="form-control"
           type="city"
           {...register("city", {
             required: "Укажите город",
@@ -106,7 +112,8 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       )}
       <label>
         Длина маршрута (км)
-        <input className="form-control"
+        <input
+          className="form-control"
           type="number"
           {...register("length", {
             required: "Укажите длину маршрута",
@@ -119,7 +126,8 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <br />
       <label>
         Ссылка на маршрут
-        <input className="form-control"
+        <input
+          className="form-control"
           {...register("mapLink", {
             required: "Укажите длину маршрута",
           })}

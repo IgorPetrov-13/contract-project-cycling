@@ -39,7 +39,7 @@ function RegistrationPage({ setUser }) {
           Ваше имя
           <input className="form-control"
             {...register("name", {
-              required: "please, write name",
+              required: "Введите имя",
               minLength: {
                 value: 3,
                 message: "Минимум три символа",
@@ -55,7 +55,7 @@ function RegistrationPage({ setUser }) {
           Your email
           <input className="form-control"
             {...register("email", {
-              required: "please, write email",
+              required: "Введите email",
               minLength: {
                 value: 4,
                 message: "Минимум четыре символа",
@@ -76,7 +76,7 @@ function RegistrationPage({ setUser }) {
           <input className="form-control"
             type="password"
             {...register("password", {
-              required: "please, write name",
+              required: "Введите пароль",
               minLength: {
                 value: 3,
                 message: "Минимум три символа",
@@ -95,7 +95,7 @@ function RegistrationPage({ setUser }) {
           <input className="form-control"
             type="password"
             {...register("confirm", {
-              required: "please, write name",
+              required: "Повторите пароль",
               minLength: {
                 value: 3,
                 message: "Минимум три символа",
