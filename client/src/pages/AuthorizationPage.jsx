@@ -40,7 +40,7 @@ function AuthorizationPage({ setUser, user }) {
 
       <label>
         Введите email
-        <input
+        <input className="form-control"
           {...register("email", {
             required: "Введите email",
             minLength: {
@@ -62,7 +62,7 @@ function AuthorizationPage({ setUser, user }) {
       <br />
       <label>
         Введите пароль
-        <input
+        <input className="form-control"
           type="password"
           {...register("password", {
             required: "Введите пароль",
@@ -79,6 +79,7 @@ function AuthorizationPage({ setUser, user }) {
           {errors?.password.message || "Error"}
         </div>
       )}
+      <br/>
       <input type="submit" disabled={!isValid} />
     </form>
     {error && <h5>{error}</h5>}

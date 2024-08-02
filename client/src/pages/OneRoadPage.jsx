@@ -9,6 +9,7 @@ function OneRoadPage({ roads }) {
   return (
     <div>
       <h2>{currRoad.title}</h2>
+      <p>Город: {currRoad.city}</p>
       <iframe
         src={currRoad.mapLink}
         width="500"

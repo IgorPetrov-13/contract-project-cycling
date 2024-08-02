@@ -42,13 +42,13 @@ function RoadsPage({ roads, setRoads }) {
             <section
               key={road.id}
               className="d-flex flex-column justify-content-center align-items-center"
-              style={{ backgroundColor: "#edf1f5", margin: "0 auto", marginBottom: "40px"}}
+              style={{ backgroundColor: "#f7f8fa", margin: "0 auto", marginBottom: "40px", borderRadius: "10px"}}
 
             >
               <Link to={`/roads/${road.id}`}>
                 <h3>{road.title}</h3>
               </Link>
-              <p>{road.description}</p>
+              <p>{road.city}</p>
               <p>
                 Длина маршрута: <strong>{road.length}км</strong>
               </p>

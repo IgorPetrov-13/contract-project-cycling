@@ -55,7 +55,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <br />
       <label>
         Название маршрута
-        <input
+        <input className="form-control"
           {...register("title", {
             required: "Пожалуйста, напишите названия",
             minLength: {
@@ -71,7 +71,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       )}
       <label>
         Описание маршрута
-        <input
+        <input className="form-control"
           {...register("description", {
             required: "Пожалуйста, опишите маршрут",
             minLength: {
@@ -89,7 +89,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <br />
       <label>
         Город
-        <input
+        <input className="form-control"
           type="city"
           {...register("city", {
             required: "Укажите город",
@@ -106,7 +106,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       )}
       <label>
         Длина маршрута (км)
-        <input
+        <input className="form-control"
           type="number"
           {...register("length", {
             required: "Укажите длину маршрута",
@@ -119,7 +119,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <br />
       <label>
         Ссылка на маршрут
-        <input
+        <input className="form-control"
           {...register("mapLink", {
             required: "Укажите длину маршрута",
           })}
@@ -128,6 +128,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       {errors?.mapLink && (
         <div style={{ color: "red" }}>{errors?.mapLink.message || "Error"}</div>
       )}
+      <br />
       <br />
       <input type="submit" disabled={!isValid} />
     </form>
