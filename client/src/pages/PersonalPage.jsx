@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import apiAxiosInstance from "../service/apiAxiosInstace";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NewRoadForm from "../components/NewRoadForm";
 
 function PersonalPage({ user }) {
   const [userRoads, setUserRoads] = useState([]);
+  const [isUpdated, setIsUpdated] = useState(false)
+
 
   const getRoad = () => {
     apiAxiosInstance
@@ -17,7 +19,7 @@ function PersonalPage({ user }) {
     if (user) {
       getRoad();
     }
-  }, [user]);
+  }, [user, isUpdated]);
 
   return (
     <div>
@@ -40,6 +42,7 @@ function PersonalPage({ user }) {
           user={user}
           setUserRoads={setUserRoads}
           userRoads={userRoads}
+          setIsUpdated={setIsUpdated}
         />
       )}
     </div>
