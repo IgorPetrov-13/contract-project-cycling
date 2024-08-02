@@ -1,6 +1,7 @@
 import Slider from "../components/Slider";
 
 function HomePage({ user }) {
+
     return (
       <div style={{ width: "500px", marginBottom: "50px", marginTop: "20px" }}>
         <h2 style={{ marginBottom: "50px" }}>
@@ -36,3 +37,4 @@ function HomePage({ user }) {
   }
   
   export default HomePage;
+
