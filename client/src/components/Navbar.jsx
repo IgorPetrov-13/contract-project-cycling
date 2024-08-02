@@ -1,15 +1,15 @@
-import {NavLink} from 'react-router-dom'
+import { NavLink } from "react-router-dom";
 
 function Navbar(props) {
-    return (
-        <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/roads">Веломаршруты</NavLink>
-            <NavLink to="/auth/authorization">Вход</NavLink>
-            <NavLink to="/auth/registration">Регистрация</NavLink>
-            <NavLink to='/user'>Личный кабинет</NavLink>
-        </nav>
-    );
+  return (
+    <nav>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/roads">Веломаршруты</NavLink>
+      <NavLink to="/auth/authorization">Вход</NavLink>
+      <NavLink to="/auth/registration">Регистрация</NavLink>
+      <NavLink to="/user">Личный кабинет</NavLink>
+    </nav>
+  );
 }
 
 export default Navbar;
