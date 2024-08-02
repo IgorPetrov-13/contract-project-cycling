@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import apiAxiosInstance, { setAccessToken } from "../service/apiAxiosInstace";
+import { useNavigate } from "react-router-dom";
 
 function RegistrationPage({ setUser }) {
   const {
@@ -16,7 +17,7 @@ function RegistrationPage({ setUser }) {
       confirm: "",
     },
   });
-
+  const navigate = useNavigate();
   const onSubmit = (data) => {
     if (data.confirm === data.password) {
       apiAxiosInstance
@@ -24,7 +25,7 @@ function RegistrationPage({ setUser }) {
         .then(({ data }) => {
           setAccessToken(data.accessToken);
           setUser(data.user);
-          
+          navigate("/");
         })
         .catch((err) => console.log(err));
     }

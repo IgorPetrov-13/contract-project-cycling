@@ -1,13 +1,36 @@
 import { NavLink } from "react-router-dom";
 
-function Navbar(props) {
+
+function Navbar({ user }) {
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/roads">Веломаршруты</NavLink>
-      <NavLink to="/auth/authorization">Вход</NavLink>
-      <NavLink to="/auth/registration">Регистрация</NavLink>
-      <NavLink to="/user">Личный кабинет</NavLink>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <NavLink to="/">
+        <span className="navbar-brand">Home</span>
+      </NavLink>
+      <NavLink to="/roads">
+        <span className="navbar-brand">Веломаршруты</span>
+      </NavLink>
+      {user ? (
+        <>
+          <NavLink to="/user">
+            <span className="navbar-brand">Личный кабинет</span>
+          </NavLink>
+          <NavLink to="/auth/logout">
+            <span className="navbar-brand">Выход</span>
+          </NavLink>
+        </>
+      ) : (
+        <>
+          <NavLink to="/auth/authorization">
+            <span className="navbar-brand">Вход</span>
+          </NavLink>
+
+          <NavLink to="/auth/registration">
+            <span className="navbar-brand">Регистрация</span>
+          </NavLink>
+        </>
+      )}
+
     </nav>
   );
 }
