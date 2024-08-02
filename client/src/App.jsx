@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/Navbar";
@@ -25,39 +25,44 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="container">
       <BrowserRouter>
-        <NavBar user={user}/>
-        <Routes>
-          <Route path="/" element={<HomePage user={user} />} />
-          <Route
-            path="/auth/authorization"
-            element={<AuthorizationPage user={user} setUser={setUser} />}
-          />
-          <Route
-            path="/auth/registration"
-            element={<RegistrationPage setUser={setUser} />}
-          />
+        <NavBar user={user} />
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <Routes>
+            <Route path="/" element={<HomePage user={user} />} />
+            <Route
+              path="/auth/authorization"
+              element={<AuthorizationPage user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/auth/registration"
+              element={<RegistrationPage setUser={setUser} />}
+            />
 
-          <Route
-            path="/roads"
-            element={<RoadsPage roads={roads} setRoads={setRoads} />}
-          />
-          <Route path="/myroads/:id" element={<CurrenRoadId roads={roads} />} />
-          <Route
-            path="/user"
-            element={<PersonalPage user={user} setRoads={setRoads} />}
-          />
-          <Route path="/roads/:id" element={<OneRoadPage roads={roads} />} />
-          <Route
-            path="/auth/logout"
-            element={<LogoutPage user={user} setUser={setUser} />}
-          />
+            <Route
+              path="/roads"
+              element={<RoadsPage roads={roads} setRoads={setRoads} />}
+            />
+            <Route
+              path="/myroads/:id"
+              element={<CurrenRoadId roads={roads} />}
+            />
+            <Route
+              path="/user"
+              element={<PersonalPage user={user} setRoads={setRoads} />}
+            />
+            <Route path="/roads/:id" element={<OneRoadPage roads={roads} />} />
+            <Route
+              path="/auth/logout"
+              element={<LogoutPage user={user} setUser={setUser} />}
+            />
 
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
