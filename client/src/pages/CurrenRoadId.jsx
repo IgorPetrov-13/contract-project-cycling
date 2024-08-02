@@ -8,24 +8,26 @@ function CurrenRoadId({roads}) {
     const [title, setTitle] = useState('');
     const [updateStatus, setUpdateStatus] = useState(false);
     const [description, setDescription] = useState('');
+    const [mapLink, setMapLink] = useState('')
     const navigate = useNavigate()
 
     useEffect(() => {
         setTitle(currentRoads.title)
         setDescription(currentRoads.description)
+        setMapLink(currentRoads.mapLink)
     }, [])
 
     const deleteRoads = () => {
         apiAxiosInstance.delete(`/roads/${id}`)
         .then(()=> {
-            navigate('/persona')
+            navigate('/user')
         })
     }
 
     const updateRoads=()=> {
         apiAxiosInstance.put(`/roads/${id}`, {title, description})
         .then(() => {
-            navigate('/persona')
+            navigate('/user')
         })
         .catch(err => console.log(err))
     }
@@ -35,6 +37,10 @@ function CurrenRoadId({roads}) {
         <>
             <h1>{title}</h1>
             <h2>{description}</h2>
+            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af9955f13709f81924320a42fc1abaf906d90c585e14767b5e305252eebbd265f&amp;source=constructor" 
+                width="300"
+                height="200"
+                frameborder="0"></iframe>
 
             {updateStatus ? 
             <>

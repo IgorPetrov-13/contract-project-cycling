@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      map: {
+      mapLink: {
         allowNull: false,
         type: Sequelize.TEXT
       },
