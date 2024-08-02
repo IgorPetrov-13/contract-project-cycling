@@ -30,14 +30,21 @@ function RoadsPage({ roads, setRoads }) {
   }, []);
 
   return (
-    <section>
-      <button onClick={toggleSortByLength}>
-        {isSortedAscending ? "Сортировать по длине маршрута" : "Вернуть обратно"}
+    <section className="d-flex flex-column justify-content-center align-items-center">
+      <button onClick={toggleSortByLength} style={{marginTop: "20px", marginBottom: "30px"}}>
+        {isSortedAscending
+          ? "Сортировать по длине маршрута"
+          : "Вернуть обратно"}
       </button>
       <div>
         {sortedRoads.map((road) => {
           return (
-            <section key={road.id}>
+            <section
+              key={road.id}
+              className="d-flex flex-column justify-content-center align-items-center"
+              style={{ backgroundColor: "#edf1f5", margin: "0 auto", marginBottom: "40px"}}
+
+            >
               <Link to={`/roads/${road.id}`}>
                 <h3>{road.title}</h3>
               </Link>
