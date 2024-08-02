@@ -31,9 +31,9 @@ roadsRoute.post("/", async (req, res) => {
       const newRoad = Road.create({
         title,
         description,
-        map,
-        length,
         city,
+        length,
+        map,
         userId,
       });
       res.status(201).json({ message: "success", newRoad });
