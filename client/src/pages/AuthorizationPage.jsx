@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import apiAxiosInstance, { setAccessToken } from "../service/apiAxiosInstace";
 import { useNavigate } from "react-router-dom";
 
 function AuthorizationPage({ setUser, user }) {
+  const [error,setError] = useState(false) 
   const {
     register,
     handleSubmit,
@@ -26,11 +27,12 @@ function AuthorizationPage({ setUser, user }) {
         navigate("/");
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.response.data.message);
       });
   };
 
   return (
+    <>
     <form onSubmit={handleSubmit(onSubmit)}>
       <h2>Вход</h2>
 
@@ -79,6 +81,8 @@ function AuthorizationPage({ setUser, user }) {
       )}
       <input type="submit" disabled={!isValid} />
     </form>
+    {error && <h5>{error}</h5>}
+    </>
   );
 }
 
