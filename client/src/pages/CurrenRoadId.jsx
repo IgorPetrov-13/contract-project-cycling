@@ -4,17 +4,27 @@ import apiAxiosInstance from '../service/apiAxiosInstace';
 
 function CurrenRoadId({roads}) {
     const {id} = useParams()
-    const currentRoads = roads.find(road=> road.id===Number(id))
-    const [title, setTitle] = useState('');
+    
+    const [curRoad, setCurRoad]= useState({})
     const [updateStatus, setUpdateStatus] = useState(false);
+    const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [mapLink, setMapLink] = useState('')
+    // const [mapLink, setMapLink] = useState('')
     const navigate = useNavigate()
 
+    function getCurrRoad (){
+        // const currentRoad = roads.find(road=> road.id===Number(id))
+        // setTitle(currentRoad.title)
+        // setDescription(currentRoad.description)
+        // setMapLink(currentRoad.mapLink)
+
+        apiAxiosInstance.get((`/roads/${id}`))
+        .then(({data})=> setCurRoad(data.road))
+        .catch(err=> console.log(err))
+    }
+
     useEffect(() => {
-        setTitle(currentRoads.title)
-        setDescription(currentRoads.description)
-        setMapLink(currentRoads.mapLink)
+        getCurrRoad()      
     }, [])
 
     const deleteRoads = () => {
@@ -32,12 +42,12 @@ function CurrenRoadId({roads}) {
         .catch(err => console.log(err))
     }
 
-    console.log(title, description)
+    console.log(curRoad.title, curRoad.description)
     return (
         <>
-            <h1>{title}</h1>
-            <h2>{description}</h2>
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af9955f13709f81924320a42fc1abaf906d90c585e14767b5e305252eebbd265f&amp;source=constructor" 
+            <h1>{curRoad.title}</h1>
+            <h2>{curRoad.description}</h2>
+            <iframe src={curRoad.mapLink} 
                 width="300"
                 height="200"
                 frameborder="0"></iframe>
@@ -45,8 +55,8 @@ function CurrenRoadId({roads}) {
             {updateStatus ? 
             <>
             <section>
-                <input type="text" onChange={(event)=> setTitle(event.target.value)} defaultValue={title}/>
-                <input type="text" onChange={(event)=> setDescription(event.target.value)} defaultValue={description}/>
+                <input type="text" onChange={(event)=> setTitle(event.target.value)} defaultValue={curRoad.title}/>
+                <input type="text" onChange={(event)=> setDescription(event.target.value)} defaultValue={curRoad.description}/>
             </section>
             </>
             : 
