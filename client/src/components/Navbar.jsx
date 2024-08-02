@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 
+
 function Navbar({ user }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,6 +30,7 @@ function Navbar({ user }) {
           </NavLink>
         </>
       )}
+
     </nav>
   );
 }
