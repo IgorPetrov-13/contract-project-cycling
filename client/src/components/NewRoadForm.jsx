@@ -14,7 +14,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       description: "",
       city: "",
       length: "",
-      map: "",
+      mapLink: "",
       userId: user.id, //!Поставить юзер айди!!--------------------------------
     },
   });
@@ -26,7 +26,7 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       data.description &&
       data.city &&
       data.length &&
-      data.map &&
+      data.mapLink &&
       data.userId
     ) {
       apiAxiosInstance
@@ -120,13 +120,13 @@ function NewRoadForm({ user, setUserRoads, userRoads }) {
       <label>
         Ссылка на маршрут
         <input
-          {...register("map", {
+          {...register("mapLink", {
             required: "Укажите длину маршрута",
           })}
         />
       </label>
-      {errors?.map && (
-        <div style={{ color: "red" }}>{errors?.map.message || "Error"}</div>
+      {errors?.mapLink && (
+        <div style={{ color: "red" }}>{errors?.mapLink.message || "Error"}</div>
       )}
       <br />
       <input type="submit" disabled={!isValid} />

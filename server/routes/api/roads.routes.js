@@ -14,15 +14,15 @@ roadsRoute.get("/", async (req, res) => {
 
 
 roadsRoute.post("/", verifyAccessToken, async (req, res) => {
-  const { title, description, map, length, city, userId } = req.body;
+  const { title, description, mapLink, length, city, userId } = req.body;
   try {
-    if (title && description && map && length && city && userId) {
+    if (title && description && mapLink && length && city && userId) {
       const newRoad = Road.create({
         title,
         description,
         city,
         length,
-        map,
+        mapLink,
         userId,
       });
       res.status(201).json({ message: "success", newRoad });

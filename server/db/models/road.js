@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Road.init({
     title: DataTypes.STRING,
-    map: DataTypes.TEXT,
+    mapLink: DataTypes.TEXT,
     length: DataTypes.INTEGER,
     city: DataTypes.STRING,
     description: DataTypes.TEXT,
