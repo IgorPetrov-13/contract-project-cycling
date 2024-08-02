@@ -7,6 +7,7 @@ function HomePage({user}) {
       Home
            
             <h2> Привет, {user ? user.name : "красавчик" }</h2>
+            <h3> {user ?  "": "давай зарегистрируемся или войдем?" } </h3>
           
 
         </div>

@@ -18,14 +18,11 @@ function AuthorizationPage({ setUser, user }) {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    console.log(data, "11111111");
     apiAxiosInstance
       .post("/auth/authorization", data)
       .then(({ data }) => {
-        console.log(data, "222222");
         setAccessToken(data.accessToken);
         setUser(data.user);
-        console.log(user,'333333333');
         navigate("/");
       })
       .catch((err) => {

@@ -1,5 +1,7 @@
 const roadsRoute = require("express").Router();
 const { Road } = require("../../db/models");
+const verifyAccessToken = require('../../middleware/verifyAccessToken')
+
 
 roadsRoute.get("/", async (req, res) => {
   try {
@@ -10,21 +12,8 @@ roadsRoute.get("/", async (req, res) => {
   }
 });
 
-roadsRoute.get("/:userId", async (req, res) => {//Берем id юзера и выводим все его маршруты в личном кабинете 
-  const { userId } = req.params;
-  try {
-    const userRoads = await Road.findAll({ where: { userId } });
-    if (userRoads) {
-      res.status(200).json({ message: "success", userRoads });
-    } else {
-      res.status(400).json({ message: "Нет такого маршрута" });
-    }
-  } catch (error) {
-    res.status(500).json(error.message);
-  }
-});
 
-roadsRoute.post("/", async (req, res) => {
+roadsRoute.post("/", verifyAccessToken, async (req, res) => {
   const { title, description, map, length, city, userId } = req.body;
   try {
     if (title && description && map && length && city && userId) {
@@ -45,7 +34,7 @@ roadsRoute.post("/", async (req, res) => {
   }
 });
 
-roadsRoute.delete("/:roadId", async (req, res) => {
+roadsRoute.delete("/:roadId", verifyAccessToken, async (req, res) => {
   const { roadId } = req.params;
   try {
     const deletedRoad = Road.destroy({ where: { id: roadId } });
@@ -59,7 +48,7 @@ roadsRoute.delete("/:roadId", async (req, res) => {
   }
 });
 
-roadsRoute.put("/:roadId", async (req, res) => {
+roadsRoute.put("/:roadId", verifyAccessToken, async (req, res) => {
   const { roadId } = req.params;
   try {
     const road = await Road.findOne({ where: { id: roadId } });
